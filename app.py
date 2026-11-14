@@ -134,6 +134,12 @@ def chat():
         return jsonify({
             "error": "Invalid request. Please send JSON data."
         }), 400
+    
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return jsonify({
+            "error": "Invalid request. Please send JSON data."
+        }), 400
 
     mode = data.get("mode", "general")
     messages = data.get("messages", [])
@@ -146,7 +152,8 @@ def chat():
 
     # Keep the latest 20 messages, matching the original prototype behaviour.
     messages = messages[-20:]
-openai_messages = [{
+
+    openai_messages = [{
         "role": "system",
         "content": CODING_PROMPT if mode == "coding" else GENERAL_PROMPT,
     }]
@@ -173,7 +180,8 @@ openai_messages = [{
         })
 
     if not any(message["role"] == "user" for message in openai_messages[1:]):
-        return jsonify({"error": "A user message is required."}), 400
+        return jsonify({"error": "Please enter a user message."}), 400
+
 
     try:
         response = client.chat.completions.create(
