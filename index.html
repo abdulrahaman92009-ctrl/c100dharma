@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>CODE AI - Your AI Assistant</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">C</div>
+            <div>
+                <h2>CODE AI</h2>
+                <span>Intelligent assistant</span>
+            </div>
+        </div>
+
+        <button id="newChat" class="new-chat">
+            + New conversation
+        </button>
+
+        <div class="history-heading">YOUR HISTORY</div>
+        <div id="historyList" class="history-list"></div>
+
+        <div class="sidebar-footer">
+            <span class="status-dot"></span>
+            CODE AI workspace
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <button id="menuButton" class="mobile-menu">☰</button>
+            <div>
+                <strong>CODE AI</strong>
+                <span class="online-label">● AI assistant</span>
+            </div>
+
+            <button id="clearChat" class="clear-button">
+                Clear chat
+            </button>
+        </header>
+
+        <section class="chat-area">
+
+            <div id="welcome" class="welcome">
+                <div class="welcome-logo">C</div>
+                <h1>What can I help you with?</h1>
+                <p>Ask anything. Learn anything. Build anything.</p>
+
+                <div class="suggestions">
+                    <button data-prompt="Explain Python functions with examples.">
+                        Explain Python functions
+                    </button>
+
+                    <button data-prompt="Write a C program using structures.">
+                        Generate a C program
+                    </button>
+
+                    <button data-prompt="Explain artificial intelligence in simple words.">
+                        Learn about AI
+                    </button>
+
+                    <button data-prompt="Create five difficult SQL practice questions.">
+                        Practice SQL
+                    </button>
+                </div>
+            </div>
+
+            <div id="messages" class="messages"></div>
+
+        </section>
+
+        <footer class="composer-area">
+
+            <div class="mode-switch">
+                <button class="mode active" data-mode="general">
+                    General AI
+                </button>
+
+                <button class="mode" data-mode="coding">
+                    &lt;/&gt; Coding AI
+                </button>
+            </div>
+
+            <div class="composer">
+                <textarea
+                    id="messageInput"
+                    placeholder="Message CODE AI..."
+                    rows="1"
+                    maxlength="8000"
+                ></textarea>
+
+                <button id="sendButton" aria-label="Send message">
+                    ↑
+                </button>
+            </div>
+
+            <p class="disclaimer">
+                CODE AI can make mistakes. Verify important information
+                and test generated code before using it.
+            </p>
+
+        </footer>
+
+    </main>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
